@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Posts List {% endblock %}
+{% block style %} {% endblock %}
+
+{% block body %}
+   <div class="container mt-3">
+      <h3>Details of {{ post_details.post_title}}, Category {{post_details.category}}</h3><br/>
+      <img width="200" src="{% url 'home_path' %}media/{{ post_details.post_image }}"><br/><br/>
+      <h5>{{ post_details.post_description }}</h5>
+      <h6 class="text-primary">
+         Posted By {{post_details.post_author}} on {{post_details.post_publish_datatime}}</h6>
+      <a href="{% url 'home_path' %}"><button type="button" class="btn btn-success">
+         Back to List
+      </button></a>
+      {% if request.user == post_details.post_author %}
+          <a href="{% url 'home_path' %}account/edit_post/{{ post_details.id}}"><button type="button" class="btn btn-success">Update</button></a>
+          <a href=""><button type="button" class="btn btn-danger">Delete</button></a>
+      {% endif %}
+      <br/><br/>
+      </h6>
+
+   </div>
+{% endblock %}

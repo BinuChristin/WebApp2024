@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %} Register {% endblock %}
+
+{% block style %}
+<style>
+    .mycustomcardstyle {
+        width: 500px;
+        margin: auto; /* Center the card */
+        margin-top: 50px; /* Adjust top margin as needed */
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container"> <!-- Wrap the form in a container for centering -->
+    <div class="card mycustomcardstyle">
+        <div class="card-body">
+            <h3 class="text-center">Register</h3>
+            <form action="" method="post" novalidate class="mx-auto text-center"> <!-- Center the form horizontally -->
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 mx-auto"> <!-- Center the column -->
+                        <div class="form-group">
+                            {{ user_req_form.username.label_tag }}
+                            {{ user_req_form.username }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mx-auto"> <!-- Center the column -->
+                        <div class="form-group">
+                            {{ user_req_form.first_name.label_tag }}
+                            {{ user_req_form.first_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mx-auto"> <!-- Center the column -->
+                        <div class="form-group">
+                            {{ user_req_form.email.label_tag }}
+                            {{ user_req_form.email }}
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-6 mx-auto"> <!-- Center the column -->
+                        <div class="form-group">
+                            {{ user_req_form.password.label_tag }}
+                            {{ user_req_form.password }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                <div class="form-group">
+                    {{ user_req_form.password2.label_tag }}
+                    {{ user_req_form.password2 }}
+                </div>
+                    </div>
+                </div>
+                <br>
+                <input type="submit" value="Register" class="btn btn-success d-block mx-auto"> <!-- Center the button -->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

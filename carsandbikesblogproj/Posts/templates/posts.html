@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} Posts List {% endblock %}
+
+{% block style %}
+<style>
+    .h1-heading {
+       color:blue;
+    }
+</style>
+{% endblock %}
+
+
+
+{% block body %}
+<span class="badge text-bg-info"><h1>Posts Lists</h1></span>
+<br><br>
+{% if searchTerm %}
+     <h2>Searching for:{{searchTerm}}</h2>
+{% endif %}
+{% for posts in posts_list %}
+  {% if posts.post_image %}
+        <img width="200" class="img-thumbnail" src="media/{{posts.post_image}}">
+  {% endif %}
+<h3>{{ posts.post_title}}</h3>
+<h4>{{ posts.category}}</h4>
+<h5 class="text-primary">Posted By {{ posts.post_author }} on {{posts.post_publish_datatime}}</h5>
+<a href="post/{{posts.id}}">
+<button type="button" class="btn btn-success">View Post</button>
+</a>
+<br><br>
+{% endfor %}
+{% include "account/pagination.html" with page=posts_list %}
+{% endblock %}

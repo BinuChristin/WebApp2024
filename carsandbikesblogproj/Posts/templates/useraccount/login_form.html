@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %} User Login {{ post_details.post_title}}{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <h3>Please Log in</h3></br>
+    <form action="" method="post" novalidate>
+        {% csrf_token %}
+        {{login_form.as_p}}
+        <input type="submit" value="Login" class="btn btn-success">
+    </form>
+</div>
+{% endblock %}
